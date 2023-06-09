@@ -1,0 +1,14 @@
+---
+- hosts: all
+  gather_facts: true
+  become: true
+  tasks:
+    - name: Creating file in all the target machines
+      file:
+        path: /home/jen/{{ item }}
+        state: touch
+        mode: "777"
+      with_items:
+        - one.py
+        - two.xml
+        - three.txt
